@@ -1,0 +1,74 @@
+.root {
+    -fx-background-color: #805626;
+}
+
+.split-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.list-view:focused {
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1;
+}
+
+#parentsLabel {
+    -fx-background-color: white;
+    -fx-background-radius: 0.5em;
+    -fx-background-insets: 0.1em;
+    -fx-padding: 0 0.2em 0 0.2em;
+    -fx-border-width: 0.15em;
+    -fx-border-color: black;
+    -fx-border-radius: 0.5em;
+}
+
+#childrenLabel {
+    -fx-background-color: white;
+    -fx-background-radius: 0.5em;
+    -fx-background-insets: 0.1em;
+    -fx-padding: 0 0.2em 0 0.2em;
+    -fx-border-width: 0.15em;
+    -fx-border-color: black;
+    -fx-border-radius: 0.5em;
+}
+
+.familyView {
+    -fx-border-width: 3;
+    -fx-border-color: orange;
+    -fx-border-radius: 3
+}
+
+.orphansList {
+    -fx-border-width: 5;
+    -fx-border-color: darkgreen;
+    -fx-border-radius: 3
+}
+
+#focusArticleBox {
+    -fx-padding: 0.2em 0.5em 0.2em 0;
+}
+
+#focusArticleLabel {
+    -fx-background-color: blanchedalmond;   
+    -fx-background-radius: 1em;
+    -fx-padding: 0.1em 0.4em 0.2em 0.4em;
+    -fx-border-color: black;
+    -fx-border-width: 0.15em;
+    -fx-border-radius: 1em;
+}
+
+#deleteButton {
+    -fx-text-fill: red;
+    -fx-font-size: 1.2em
+}
+
+.popup {
+    -fx-background-color: red, lightgray;
+    -fx-background-insets: 0, 3;  
+    -fx-background-radius: 13, 10;
+}
+
+.tooltip {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}

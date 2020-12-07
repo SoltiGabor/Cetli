@@ -1,0 +1,6 @@
+org.loadui.testfx
+org.loadui.testfx.categories
+org.loadui.testfx.controls
+org.loadui.testfx.controls.impl
+org.loadui.testfx.exceptions
+org.loadui.testfx.utils

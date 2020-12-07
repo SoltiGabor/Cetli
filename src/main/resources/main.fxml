@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import cetli.ArticleList?>
+<?import cetli.ArticleListWithRemoveButtons?>
+<?import cetli.FilterPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<?import javafx.scene.control.Tooltip?>
+<StackPane fx:id="root"
+           onDragOver="#importDragOver"
+           onDragDropped="#importDropped"
+           xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="cetli.MainController">
+    <padding>
+        <Insets top="10"
+                bottom="10"
+                left="10"
+                right="10"/>
+    </padding>
+    <SplitPane dividerPositions="0.25, 0.75" >
+        <VBox fx:id="searchPanel"
+              spacing="5">
+            <StackPane.margin>
+                <Insets right="3"/>
+            </StackPane.margin>
+            <HBox spacing="5">
+                <TextField fx:id="searchField"
+                           promptText="Search"
+                           onAction="#search"
+                           HBox.hgrow="ALWAYS"  />
+                <Button fx:id="newArticleButton"
+                        text="->"
+                        onAction="#newArticle">
+                    <tooltip><Tooltip text="Create new article" /></tooltip>
+                </Button>
+            </HBox>
+            <ArticleList fx:id="searchList"
+                         draggable="true"
+                         VBox.vgrow="ALWAYS" />
+        </VBox>
+        <SplitPane fx:id="articleView"
+                   orientation="VERTICAL"
+                   dividerPositions="0.65"
+                   disable="true">
+            <StackPane.margin>
+                <Insets left="3"
+                        right="3"/>
+            </StackPane.margin>
+            <VBox fx:id="articleBody"
+                  spacing="5">
+                <StackPane.margin>
+                    <Insets bottom="5"/>
+                </StackPane.margin>
+                <HBox spacing="5">
+                    <Button fx:id="historyButton"
+                            text="&lt;-"
+                            onAction="#goBack"
+                            onMouseEntered="#showHistory">
+                        <tooltip><Tooltip text="History" /></tooltip>
+                    </Button>
+                    <TextField fx:id="titleField"
+                               promptText="Title"
+                               HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="filterButton"
+                            text="->"
+                            onAction="#filterButtonPressed">
+                        <tooltip><Tooltip text="Filter by alternative categories" /></tooltip>
+                    </Button>
+                </HBox>
+                <TextArea fx:id="contentArea"
+                          VBox.vgrow="ALWAYS"
+                          wrapText="true"/>
+                <HBox spacing="5"
+                      alignment="BASELINE_CENTER">
+                    <Button fx:id="deleteButton"
+                            text="X"
+                            onAction="#deleteArticle">
+                        <tooltip><Tooltip text="Delete article" /></tooltip>
+                    </Button>
+                    <TextField fx:id="uriField"
+                               HBox.hgrow="ALWAYS" 
+                               promptText="Web URL or local file path"/>
+                    <Button fx:id="goButton"
+                            text="->"
+                            onAction="#go">
+                        <tooltip><Tooltip text="Open external content" /></tooltip>
+                    </Button>
+                </HBox>
+            </VBox>
+            <HBox fx:id="parentsAndChildren"
+                  spacing="5">
+                <StackPane.margin>
+                    <Insets top="3"/>
+                </StackPane.margin>
+                <VBox spacing="5"
+                      alignment="CENTER"
+                      HBox.hgrow="ALWAYS">
+                    <Label fx:id="parentsLabel"
+                           text="Parents"/>
+                    <ArticleListWithRemoveButtons fx:id="parents"
+                                                  onDragOver="#articleDragOver" 
+                                                  onDragDropped="#parentDropped"
+                                                  onButtonPressed="#removeParentPressed"
+                                                  VBox.vgrow="ALWAYS"/>
+                </VBox>
+                <VBox spacing="5"
+                      alignment="CENTER"
+                      HBox.hgrow="ALWAYS">
+                    <Label fx:id="childrenLabel"
+                           text="Children" />
+                    <ArticleListWithRemoveButtons fx:id="children"
+                                                  onDragOver="#articleDragOver" 
+                                                  onDragDropped="#childDropped"
+                                                  onButtonPressed="#removeChildPressed"
+                                                  VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </HBox>
+        </SplitPane>
+        <FilterPane fx:id="filterPane">
+            <StackPane.margin>
+                <Insets left="3"/>
+            </StackPane.margin>
+        </FilterPane>
+    </SplitPane>
+    <ArticleList fx:id="history"
+                 draggable="true"
+                 visible="false"
+                 StackPane.alignment="TOP_LEFT"
+                 onMouseExited="#hideHistory"/>
+</StackPane>

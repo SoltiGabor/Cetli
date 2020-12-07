@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import cetli.ArticleListWithFocusButtons?>
+<?import cetli.FamilyView?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="javafx.scene.layout.VBox"
+         xmlns:fx="http://javafx.com/fxml"
+         alignment="CENTER" 
+         styleClass="familyView">
+    <ArticleListWithFocusButtons fx:id="parentsListView"
+                                 draggable="true"/>
+    <BorderPane fx:id="focusArticleBox">
+        <center>
+            <Label fx:id="focusArticleLabel"
+                   onMouseClicked="#focusClicked">
+                <VBox.margin>
+                    <Insets bottom="5"
+                            right="5"
+                            left="5"
+                            top="5"/>
+                </VBox.margin>            
+            </Label>
+        </center>
+        <right>
+            <Button text="X"
+                    style="-fx-text-fill: red"
+                    onAction="#removeFamilyView">
+                <tooltip><Tooltip text="Remove filter article" /></tooltip>
+            </Button>
+        </right>
+    </BorderPane>
+    <ArticleListWithFocusButtons fx:id="childrenListView"
+                                 draggable="true" />
+</fx:root>
